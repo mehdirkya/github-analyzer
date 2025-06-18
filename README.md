@@ -1,2 +1,37 @@
-# github-analyzer
-A simple Flask web app that fetches a GitHub user's public repositories
+# GitHub Profile Analyzer 🧠📊
+
+A simple Flask web app that analyzes a GitHub user's public profile and visualizes key data using charts.
+
+![screenshot](https://via.placeholder.com/800x400?text=GitHub+Profile+Analyzer+Screenshot)
+
+## 🚀 Features
+
+- Enter a GitHub username and instantly fetch:
+  - Number of public repositories
+  - Most-used programming languages
+  - Number of stars across repos
+- Clean chart-based visualization with Chart.js
+- Lightweight and beginner-friendly Flask + HTML/CSS project
+
+---
+
+## 📸 Preview
+
+![preview](https://via.placeholder.com/600x300?text=Chart+Example)
+
+---
+
+## 🧰 Tech Stack
+
+- **Python 3**
+- **Flask**
+- **GitHub API**
+- **Chart.js**
+- HTML + CSS (and optionally Bootstrap)
+
+---
+
+## 🛠️ How to Run Locally
+
+1. **Clone the repository**  
+```bash
