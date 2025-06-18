@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Analyzer</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #langChart {
+            width: 300px !important;
+            height: 300px !important;
+            max-width: 100%;
+            display: block;
+            margin: 1rem auto;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f2f5;
+        padding: 2rem;
+        max-width: 600px;
+        margin: auto;
+        color: #333;
+        }
+
+        h1, h2 {
+        color: #222;
+        text-align: center;
+        }
+
+        form {
+        text-align: center;
+        margin-bottom: 2rem;
+        }
+
+        input {
+        padding: 0.5rem;
+        width: 70%;
+        max-width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        }
+
+        button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+        }
+
+        button:hover {
+        background: #0056b3;
+        }
+
+        ul, ol {
+        padding-left: 1.2rem;
+        max-width: 400px;
+        margin: auto;
+        }
+
+        a {
+        color: #007bff;
+        text-decoration: none;
+        }
+
+        a:hover {
+        text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+<body>
+  <h1>GitHub Profile Analyzer</h1>
+  <form method="POST">
+   <input name="username" placeholder="GitHub username" required
+       value="{{ username if username and method == 'POST' else '' }}">
+    <button type="submit">Analyze</button>
+  </form>
+    {% if username %}
+        <p>You entered: {{ username }}</p>
+    {% endif %}
+
+    {% if repos %}
+    <h2>Repositories:</h2>
+    <ul>
+        {% for repo in repos %}
+        <li>{{ repo.name }} — ⭐ {{ repo.stargazers_count }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Total Stars: {{ total_stars }}</h2>
+
+    <h2>Most Used Languages:</h2>
+    <ul>
+    {% for lang, count in languages.items() %}
+        <li>{{ lang }} ({{ count }})</li>
+    {% endfor %}
+    </ul>
+    <canvas id="langChart" width="300" height="300" style="max-width: 100%; height: auto;"></canvas>
+    <h2>Top Repositories:</h2>
+    <ol>
+    {% for repo in top_repos %}
+        <li>
+        <a href="{{ repo.url }}" target="_blank">{{ repo.name }}</a>
+        — ⭐ {{ repo.stars }}
+        </li>
+    {% endfor %}
+    </ol>
+
+    {% elif username %}
+    <p>No repositories found or user not found.</p>
+    {% endif %}
+    <script>
+        const languages = {{ languages | tojson }};
+        
+        const ctx = document.getElementById('langChart').getContext('2d');
+        const data = {
+            labels: Object.keys(languages),
+            datasets: [{
+            label: 'Languages used',
+            data: Object.values(languages),
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#cc65fe',
+                '#ffce56',
+                '#2ecc71',
+                '#e74c3c',
+                '#3498db'
+            ],
+            }]
+        };
+        
+        new Chart(ctx, {
+            type: 'pie',
+            data: data,
+        });
+    </script>
+
+</body>
+</html>
