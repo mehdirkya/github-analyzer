@@ -17,7 +17,10 @@ A simple Flask web app that analyzes a GitHub user's public profile and visualiz
 
 ## 📸 Preview
 
-![preview](https://via.placeholder.com/600x300?text=Chart+Example)
+<p align="center">
+  <img src="images/screenshot1.png" width="45%" alt="Screenshot 1"/>
+  <img src="images/screenshot2.png" width="45%" alt="Screenshot 2"/>
+</p>
 
 ---
 
