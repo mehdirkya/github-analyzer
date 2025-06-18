@@ -2,7 +2,6 @@
 
 A simple Flask web app that analyzes a GitHub user's public profile and visualizes key data using charts.
 
-![screenshot](https://via.placeholder.com/800x400?text=GitHub+Profile+Analyzer+Screenshot)
 
 ## 🚀 Features
 
@@ -18,8 +17,8 @@ A simple Flask web app that analyzes a GitHub user's public profile and visualiz
 ## 📸 Preview
 
 <p align="center">
-  <img src="images/screenshot1.png" width="45%" alt="Screenshot 1"/>
-  <img src="images/screenshot2.png" width="45%" alt="Screenshot 2"/>
+  <img src="screenshot1.png" width="45%" alt="Screenshot 1"/>
+  <img src="screenshot2.png" width="45%" alt="Screenshot 2"/>
 </p>
 
 ---
